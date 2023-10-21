@@ -28,17 +28,10 @@ const SubBreedImage = () => {
   }, []);
 
   const handleBreed = (breed: any) => {
-    console.log(breed, "breed");
-    console.log(
-      responseList.message,
-      responseList.message[breed.value],
-      "sub breed"
-    );
     const formated = config.formatSubBreedList(
       responseList.message[breed.value]
     );
     setSubBreed(formated);
-    console.log(formated, "formated sub breed");
   };
 
   const handleSubBreed = (subbreed: any) => {

@@ -33,3 +33,9 @@ img {
   max-height: 200px;
   position: relative !important;
 }
+
+.image {
+  width: 150px;
+  height: 150px;
+  background-size: cover;
+}

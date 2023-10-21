@@ -10,6 +10,7 @@ const BreedImage = () => {
     ssr: false,
   });
   const [breed, setBreed] = useState<SelectOptions>();
+  const [selectedBreed, setSelectedBreed] = useState<string>("");
 
   const fetchDogs = async () => {
     const res = await fetch(`${config.BACKEND_API_URL}/breeds/list/all`);
@@ -24,7 +25,7 @@ const BreedImage = () => {
   }, []);
 
   const handleBreed = (breed: any) => {
-    console.log(breed, "breed");
+    setSelectedBreed(breed.value);
   };
 
   return (
@@ -33,7 +34,10 @@ const BreedImage = () => {
         <Select instanceId="1" options={breed} onChange={e => handleBreed(e)} />
       </div>
       <div>
-        <DynamicImage />
+        <DynamicImage
+          breedName={selectedBreed}
+          setSelectedBreed={setSelectedBreed}
+        />
       </div>
     </main>
   );

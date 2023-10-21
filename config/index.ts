@@ -19,7 +19,6 @@ const formatBreedList = (dogList: DogList) => {
   return options as SelectOptions;
 };
 const formatSubBreedList = (dogList: any) => {
-  debugger;
   let options: SelectOptions = [];
   dogList.map((name: string, key: number) => {
     if (name) options.push({ value: name, label: capitalizeFLetter(name) });
