@@ -11,13 +11,12 @@ export default function RootLayout({
   const activeSegment = useSelectedLayoutSegment();
 
   const links = [
-    { label: "Random Image", path: "/", targetSegment: null },
+    { label: "Images by breed", path: "/", targetSegment: null },
     {
-      label: "Images by breed",
-      path: "/breed-image",
+      label: "Images by sub breed",
+      path: "/sub-breed-image",
       targetSegment: "breed image",
     },
-    { label: "Contact", path: "/contact", targetSegment: "contact" },
   ];
 
   return (

@@ -1,29 +1,42 @@
 "use client";
+import config from "@/config";
+import SelectOptions from "@/interfaces/SelectOptions";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
+import Select from "react-select";
 
-type DogList = {
-  message: Array<string>;
-};
-
-const Home = () => {
-  const [dogs, setDogs] = useState<DogList>({ message: [] });
-  const [breed, setBreed] = useState<string | null>(null);
+const BreedImage = () => {
   const DynamicImage = dynamic(() => import("../components/random-image"), {
     ssr: false,
   });
+  const [breed, setBreed] = useState<SelectOptions>();
+
+  const fetchDogs = async () => {
+    const res = await fetch(`${config.BACKEND_API_URL}/breeds/list/all`);
+    const data = await res.json();
+    const formated = config.formatBreedList(data);
+    setBreed(formated);
+    return data;
+  };
 
   useEffect(() => {
-    // fetchDogs();
-  });
+    fetchDogs();
+  }, []);
+
+  const handleBreed = (breed: any) => {
+    console.log(breed, "breed");
+  };
 
   return (
     <main className="">
-      <div className="random-image">
+      <div className="">
+        <Select instanceId="1" options={breed} onChange={e => handleBreed(e)} />
+      </div>
+      <div>
         <DynamicImage />
       </div>
     </main>
   );
 };
 
-export default Home;
+export default BreedImage;

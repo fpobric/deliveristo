@@ -1,5 +1,6 @@
 "use client";
 
+import config from "@/config";
 import Image from "next/image";
 import { SyntheticEvent, useCallback, useEffect, useState } from "react";
 
@@ -8,7 +9,13 @@ type RandomImage = {
   status: string;
 };
 
-const DogImage = ({ breedName }: { breedName?: string | undefined | null }) => {
+const DogImage = ({
+  breedName,
+  subBreedName,
+}: {
+  breedName?: string | undefined | null;
+  subBreedName?: string | undefined | null;
+}) => {
   const [randomImage, setRandomImage] = useState<RandomImage>({
     message: "",
     status: "",
@@ -16,9 +23,7 @@ const DogImage = ({ breedName }: { breedName?: string | undefined | null }) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const fetchImage = async () => {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/breeds/image/random`
-    );
+    const res = await fetch(`${config.BACKEND_API_URL}/breeds/image/random`);
     const data = await res.json();
     setRandomImage(data);
     setIsLoading(false);
