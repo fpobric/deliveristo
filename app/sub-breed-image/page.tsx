@@ -1,53 +1,93 @@
 "use client";
 import config from "@/config";
-import DogList from "@/interfaces/DogList";
+import SelectOption from "@/interfaces/SelectOption";
 import SelectOptions from "@/interfaces/SelectOptions";
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
-import Select from "react-select";
+import { useEffect, useRef, useState } from "react";
+import Select, { GroupBase, SelectInstance } from "react-select";
 
 const SubBreedImage = () => {
-  const [breed, setBreed] = useState<SelectOptions>();
-  const [subBreed, setSubBreed] = useState<SelectOptions>();
-  const [responseList, setResponseList] = useState<DogList>({ message: [] });
-  const DynamicImage = dynamic(() => import("../../components/random-image"), {
+  const DynamicImage = dynamic(() => import("../../components/app-image"), {
     ssr: false,
   });
+  const [response, setResponse] = useState<any>();
+  const [breed, setBreed] = useState<SelectOptions>();
+  const [selectedBreed, setSelectedBreed] = useState<SelectOption>({
+    value: "",
+    label: "",
+  });
+  const [subBreed, setSubBreed] = useState<SelectOptions>();
+  const [selectedSubBreed, setSelectedSubBreed] = useState<SelectOption>({
+    value: "",
+    label: "",
+  });
+  const selectBreedRef =
+    useRef<SelectInstance<Object, false, GroupBase<Object>>>();
+  const selectSubBreedRef =
+    useRef<SelectInstance<Object, false, GroupBase<Object>>>();
 
   const fetchDogs = async () => {
     const res = await fetch(`${config.BACKEND_API_URL}/breeds/list/all`);
     const data = await res.json();
     const formated = config.formatBreedList(data);
     setBreed(formated);
-    setResponseList(data);
-    return data;
+    setResponse(data);
+    return formated;
   };
 
   useEffect(() => {
     fetchDogs();
   }, []);
 
-  const handleBreed = (breed: any) => {
-    const formated = config.formatSubBreedList(
-      responseList.message[breed.value]
-    );
-    setSubBreed(formated);
+  const handleBreed = (selectedBreed: any) => {
+    setSelectedSubBreed({ value: "", label: "" });
+    setSelectedBreed({
+      value: selectedBreed.value,
+      label: selectedBreed.label,
+    });
+    if (response) {
+      const subBreed = response.message[selectedBreed.value];
+      const formatedValues = config.formatSubBreedList(subBreed);
+      setSubBreed(formatedValues);
+    }
   };
 
-  const handleSubBreed = (subbreed: any) => {
-    console.log(subbreed, "breed");
+  const handleSubBreed = (breed: any) => {
+    setSelectedSubBreed({ value: breed.value, label: breed.label });
   };
 
   return (
     <main className="">
       <div className="">
-        <Select instanceId="1" options={breed} onChange={e => handleBreed(e)} />
+        <Select
+          instanceId="1"
+          options={breed}
+          value={selectedBreed}
+          onChange={e => handleBreed(e)}
+          ref={
+            selectBreedRef as React.RefObject<
+              SelectInstance<Object, false, GroupBase<Object>>
+            >
+          }
+        />
+        <Select
+          instanceId="2"
+          options={subBreed}
+          value={selectedSubBreed}
+          onChange={e => handleSubBreed(e)}
+          ref={
+            selectSubBreedRef as React.RefObject<
+              SelectInstance<Object, false, GroupBase<Object>>
+            >
+          }
+        />
       </div>
-      <Select
-        instanceId="2"
-        options={subBreed}
-        onChange={e => handleSubBreed(e)}
-      />
+      <div>
+        <DynamicImage
+          breedName={selectedBreed?.value}
+          subBreedName={selectedSubBreed?.value}
+        />
+      </div>
     </main>
   );
 };
