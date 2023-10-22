@@ -50,9 +50,9 @@ const BreedImage = () => {
           }
         />
       </div>
-      <div>
+      {selectedBreed?.value ? (
         <DynamicImage breedName={selectedBreed?.value} />
-      </div>
+      ) : null}
     </main>
   );
 };

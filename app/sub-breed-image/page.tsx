@@ -82,12 +82,12 @@ const SubBreedImage = () => {
           }
         />
       </div>
-      <div>
+      {selectedSubBreed?.value ? (
         <DynamicImage
           breedName={selectedBreed?.value}
           subBreedName={selectedSubBreed?.value}
         />
-      </div>
+      ) : null}
     </main>
   );
 };
