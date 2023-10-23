@@ -1,13 +1,10 @@
 "use client";
 
 import config from "@/config";
+import DogImage from "@/types/DogImage";
 import Image from "next/image";
 import { SyntheticEvent, useCallback, useEffect, useState } from "react";
-
-type DogImage = {
-  message: string;
-  status: string;
-};
+import GalleryButtons from "../gallery-buttons";
 
 const AppImage = ({
   breedName,
@@ -98,27 +95,12 @@ const AppImage = ({
               backgroundImage: `url(${dogImage.message[currentIndex]})`,
             }}
           ></div>
-          {dogImage.message.length > 1 ? (
-            <div className="d-flex justify-content-center mt-4">
-              <button
-                className="btn btn-outline-dark me-3 app-btn -fixed-width"
-                onClick={() => changeImage(-1)}
-                disabled={currentIndex === 0}
-              >
-                Previous
-              </button>
-              <button
-                className="btn btn-outline-dark app-btn -fixed-width"
-                onClick={() => changeImage(1)}
-                disabled={
-                  dogImage.message.length - 1 === currentIndex &&
-                  dogImage.message.length !== 0
-                }
-              >
-                Next
-              </button>
-            </div>
-          ) : null}
+          <GalleryButtons
+            dogImage={dogImage}
+            count={dogImage.message.length}
+            currentIndex={currentIndex}
+            changeImage={changeImage}
+          />
         </div>
       ) : null}
     </div>
