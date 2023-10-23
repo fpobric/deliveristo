@@ -10,7 +10,7 @@ const Sidebar = () => {
   const activeSegment = useSelectedLayoutSegment();
   console.log(activeSegment, "active");
   const { onSectionChange } = useSectionState();
-  const { isSidebarOpen } = useSidebar();
+  const { isSidebarOpen, toggle } = useSidebar();
   useEffect(() => {}, [activeSegment]);
   return (
     <>
@@ -41,7 +41,10 @@ const Sidebar = () => {
                               activeSegment === l.targetSegment ? "-active" : ""
                             }`}
                             href={l.path}
-                            onClick={() => onSectionChange(l.title)}
+                            onClick={() => {
+                              toggle();
+                              onSectionChange(l.title);
+                            }}
                           >
                             {l.label}
                           </Link>

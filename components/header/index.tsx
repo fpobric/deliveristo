@@ -6,14 +6,12 @@ const Header = () => {
   const { state } = useSectionState();
   const { toggle } = useSidebar();
   return (
-    <Row around="xs" className="bg-light">
-      <div className="mobile-icon" onClick={() => toggle()}>
-        Icon
-      </div>
-      <Col xsOffset={3} xs={9} className="d-flex justify-content-center">
+    <div className="bg-light d-flex w-100">
+      <div className="mobile-icon" onClick={() => toggle()}></div>
+      <div className="d-flex justify-content-center align-items-center w-100">
         Dogs dash - {state.selectedSection}
-      </Col>
-    </Row>
+      </div>
+    </div>
   );
 };
 

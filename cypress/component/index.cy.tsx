@@ -33,6 +33,7 @@ describe("<Random />", () => {
         // the dog image is shown instead.
         cy.get('[data-cy="app-loader"]').should("not.exist");
         cy.get('[data-cy="dog-image"]').should("be.visible");
+        cy.get('[data-cy="btn-fetch"]').should("be.visible");
       });
   });
 });

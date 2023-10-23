@@ -24,12 +24,11 @@ export default function RootLayout({
             <Row className="p-0">
               <Header />
               <Row around="xs">
-                <Col xs={12}>
-                  <Row>
-                    <Sidebar />
-
-                    <div className="content h-100">{children}</div>
-                  </Row>
+                <Col xs={3} className="p-0">
+                  <Sidebar />
+                </Col>
+                <Col xs={12} lg={9}>
+                  <div className="content h-100">{children}</div>
                 </Col>
               </Row>
               <Row></Row>

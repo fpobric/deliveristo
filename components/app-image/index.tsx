@@ -78,7 +78,7 @@ const AppImage = ({
             className="btn btn-outline-dark me-3 app-btn"
             onClick={e => handleRandomByBreed(e)}
           >
-            Feeling lucky by breed?
+            Feeling lucky?
           </button>
         </div>
       ) : null}
@@ -89,7 +89,7 @@ const AppImage = ({
           {/* had to put prop unoptimized to diplay image in cypress test */}
           {dogImage.message !== "" && typeof dogImage.message === "string" ? (
             <div className="d-flex flex-wrap">
-              <div className="w-100">
+              <div className="d-flex justify-content-center w-100">
                 <Image
                   src={dogImage?.message}
                   // layout="fill"
@@ -99,13 +99,15 @@ const AppImage = ({
                   unoptimized
                 />
               </div>
-              <button
-                className="btn btn-outline-dark me-3 app-btn -fixed-width mt-4"
-                onClick={() => fetchImage()}
-                data-cy="btn-previous"
-              >
-                Fetch
-              </button>
+              <div className="d-flex justify-content-center w-100">
+                <button
+                  className="btn btn-outline-dark me-3 app-btn -fixed-width mt-4"
+                  onClick={() => fetchImage()}
+                  data-cy="btn-fetch"
+                >
+                  Fetch
+                </button>
+              </div>
             </div>
           ) : null}
           {Array.isArray(dogImage.message) &&

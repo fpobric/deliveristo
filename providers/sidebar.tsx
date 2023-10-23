@@ -10,7 +10,6 @@ const SidebarProvider = ({ children }: { children: any }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggle = () => {
-    debugger;
     setIsSidebarOpen(!isSidebarOpen);
   };
 

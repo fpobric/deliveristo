@@ -9,7 +9,7 @@ const RandomImage = () => {
   useEffect(() => {}, []);
   return (
     <main
-      className="d-flex col-xs-12 h-100 align-items-center justify-content-center"
+      className="d-flex col-xs-12 h-100 align-items-center justify-content-center mt-3"
       data-cy="random-image"
     >
       <DynamicImage />

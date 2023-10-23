@@ -1,7 +1,6 @@
 .app-image {
   img {
     position: relative !important;
-    height: auto;
     max-height: 300px;
     width: auto;
     max-width: 300px;
@@ -10,7 +9,7 @@
     .image {
       width: auto;
       max-width: 300px;
-      height: auto;
+      height: 300px;
       max-height: 300px;
       background-size: cover;
       background-repeat: no-repeat;
