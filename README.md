@@ -22,7 +22,17 @@ npm run cypress:open
 yarn cypress:open
 ```
 
-For test automation Cypress has been integrated into project. Test cases and complexity are reduced to minimus cause of the lack of free time to make them more complex.
+For test automation Cypress has been integrated into project. Test cases and complexity are reduced cause of the lack of time
+
+## -------------Important---------------
+
+### To run e2e test you have to run the app with
+
+```bash
+npm start or yarn start
+# then in antoher terminal/console
+npm run cypress:open or yarn cypress:open
+```
 
 ## Libraries and versions
 
@@ -36,9 +46,9 @@ Project has been clean and no unused libraries are getting installed.
 
 ### Libraries and versions and code
 
-Please bear in mind that I am very limited with my free time at th moment. Maybe some parts of the project could have been written in better way. Keeping in mind that if you find some sections could have been written more cleanly or with better approach, please mark them and we could discuss them and I can give you other approach to the problem.
+Please bear in mind that I am very limited with my free time at the moment. Maybe some parts of the project could have been written in better way. Keeping in mind that if you find some sections could have been written more cleanly or with better approach, please mark them and we could discuss them and I can give you other approach to the problem.
 
-##Hoping you will find this code good enough to book a call with me to discuss my background and knowledge.
+## Hoping you will find this code good enough to book a call with me to discuss my background and knowledge.
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
