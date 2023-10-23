@@ -37,19 +37,19 @@ const links = [
     label: "Images by breed",
     path: "/",
     title: "Breed section",
-    targetSegment: "breed",
+    targetSegment: null,
   },
   {
     label: "Images by sub breed",
     path: "/sub-breed-image",
     title: "Breed and sub-breed section",
-    targetSegment: "sub-breed",
+    targetSegment: "sub-breed-image",
   },
   {
     label: "Random images",
     path: "/random-image",
     title: "Random section",
-    targetSegment: "random",
+    targetSegment: "random-image",
   },
 ];
 

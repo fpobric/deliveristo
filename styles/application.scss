@@ -8,8 +8,20 @@
 @import "./app-fonts";
 @import "./app-image";
 @import "./app-loading";
+@import "./app-text";
+@import "./vertical-nav";
 
 html * {
   font-family: karla-regular !important;
+}
+html {
   overflow-x: hidden;
+}
+.mobile-icon {
+  display: none;
+}
+@media (max-width: 1024px) {
+  .mobile-icon {
+    display: block;
+  }
 }

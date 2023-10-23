@@ -1,13 +1,17 @@
 .app-image {
   img {
     position: relative !important;
-    max-width: 400px;
-    max-height: 400px;
+    height: auto;
+    max-height: 300px;
+    width: auto;
+    max-width: 300px;
   }
   .image-wrapper {
     .image {
-      width: 400px;
-      height: 400px;
+      width: auto;
+      max-width: 300px;
+      height: auto;
+      max-height: 300px;
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;

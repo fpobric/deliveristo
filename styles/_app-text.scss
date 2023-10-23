@@ -1,0 +1,79 @@
+.app-text {
+  font-weight: 400;
+
+  &.-light {
+    font-weight: 400 !important;
+  }
+  &.-normal {
+    font-weight: 500 !important;
+  }
+  &.-medium {
+    font-weight: 600 !important;
+  }
+  &.-bold {
+    font-weight: 900 !important;
+  }
+  &.-no-decoration {
+    text-decoration: none;
+  }
+  &.-underline {
+    text-decoration: underline !important;
+  }
+  &.-uppercase {
+    text-transform: uppercase;
+  }
+  &.-verysmall {
+    font-size: 10px;
+  }
+  &.-small {
+    font-size: 12px;
+  }
+  &.-regular {
+    font-size: 14px !important;
+  }
+  &.-large {
+    font-size: 18px !important;
+  }
+  &.-extra-large {
+    font-size: 40px !important;
+  }
+  &.-left {
+    text-align: left;
+  }
+  &.-right {
+    text-align: right;
+  }
+  &.-center {
+    text-align: center;
+  }
+  &.-break {
+    word-break: break-word;
+  }
+  &.-uppercase {
+    text-transform: uppercase;
+  }
+  &.-italic {
+    font-style: italic;
+  }
+  &.-link {
+    color: #000000;
+    cursor: pointer;
+    text-decoration: none;
+    &.-active {
+      color: #c49ef2;
+    }
+    &:hover {
+      text-decoration: underline;
+      color: #7d7a7a;
+    }
+  }
+  &.-grey {
+    color: #7e7e7e;
+  }
+  &.-capitalize {
+    text-transform: capitalize;
+  }
+  *.-no-break {
+    white-space: nowrap;
+  }
+}

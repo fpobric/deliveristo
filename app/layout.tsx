@@ -6,6 +6,7 @@ import Header from "@/components/header";
 import { useEffect } from "react";
 import useSectionState from "@/hooks/useSectionState";
 import Sidebar from "@/components/sidebar";
+import SidebarProvider from "@/providers/sidebar";
 
 export default function RootLayout({
   children,
@@ -19,18 +20,21 @@ export default function RootLayout({
     <html lang="en">
       <body className={`app-body`}>
         <SelectedSectionProvider>
-          <Row className="p-0">
-            <Header />
-            <Row around="xs">
-              <Col xs={3} className="p-0">
-                <Sidebar />
-              </Col>
-              <Col xs={9}>
-                <div className="content h-100">{children}</div>
-              </Col>
+          <SidebarProvider>
+            <Row className="p-0">
+              <Header />
+              <Row around="xs">
+                <Col xs={12}>
+                  <Row>
+                    <Sidebar />
+
+                    <div className="content h-100">{children}</div>
+                  </Row>
+                </Col>
+              </Row>
+              <Row></Row>
             </Row>
-            <Row></Row>
-          </Row>
+          </SidebarProvider>
         </SelectedSectionProvider>
       </body>
     </html>

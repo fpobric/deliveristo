@@ -88,12 +88,25 @@ const AppImage = ({
         <div className="image-frame" data-cy="dog-image">
           {/* had to put prop unoptimized to diplay image in cypress test */}
           {dogImage.message !== "" && typeof dogImage.message === "string" ? (
-            <Image
-              src={dogImage?.message}
-              layout="fill"
-              alt="Picture of the dog"
-              unoptimized
-            />
+            <div className="d-flex flex-wrap">
+              <div className="w-100">
+                <Image
+                  src={dogImage?.message}
+                  // layout="fill"
+                  alt="Picture of the dog"
+                  width={300}
+                  height={300}
+                  unoptimized
+                />
+              </div>
+              <button
+                className="btn btn-outline-dark me-3 app-btn -fixed-width mt-4"
+                onClick={() => fetchImage()}
+                data-cy="btn-previous"
+              >
+                Fetch
+              </button>
+            </div>
           ) : null}
           {Array.isArray(dogImage.message) &&
           dogImage.message[currentIndex] !== "" &&

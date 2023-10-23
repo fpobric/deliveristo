@@ -1,6 +1,7 @@
 import React from "react";
 import RandomImage from "../../app/random-image/page";
 import SelectedSectionProvider from "../../providers/sectionstate";
+import SidebarProvider from "@/providers/sidebar";
 describe("<Random />", () => {
   beforeEach(() => {
     // run these tests as if in a desktop
@@ -10,7 +11,9 @@ describe("<Random />", () => {
     }).as("dogs-list");
     cy.mount(
       <SelectedSectionProvider>
-        <RandomImage />
+        <SidebarProvider>
+          <RandomImage />
+        </SidebarProvider>
       </SelectedSectionProvider>
     );
   });

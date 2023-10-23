@@ -1,15 +1,20 @@
 import config from "@/config";
 import useSectionState from "@/hooks/useSectionState";
+import useSidebar from "@/hooks/useSidebar";
 import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
+import { useEffect } from "react";
 import { Col } from "react-flexbox-grid";
 
 const Sidebar = () => {
   const activeSegment = useSelectedLayoutSegment();
-  const { state, onSectionChange } = useSectionState();
+  console.log(activeSegment, "active");
+  const { onSectionChange } = useSectionState();
+  const { isSidebarOpen } = useSidebar();
+  useEffect(() => {}, [activeSegment]);
   return (
     <>
-      <Col xs={12}>
+      <Col xs={12} className={`vertical-nav ${isSidebarOpen ? "active" : ""}`}>
         <div className="container-fluid p-0">
           <div className="row flex-nowrap">
             <div className="col-auto col-md-12 px-sm-2 px-0 bg-light">
@@ -32,14 +37,11 @@ const Sidebar = () => {
                         <hr />
                         <li className="nav-item">
                           <Link
+                            className={`app-text -link ${
+                              activeSegment === l.targetSegment ? "-active" : ""
+                            }`}
                             href={l.path}
                             onClick={() => onSectionChange(l.title)}
-                            style={{
-                              textDecoration:
-                                activeSegment === l.targetSegment
-                                  ? "underline"
-                                  : "none",
-                            }}
                           >
                             {l.label}
                           </Link>
