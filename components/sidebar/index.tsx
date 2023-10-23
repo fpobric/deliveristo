@@ -18,9 +18,9 @@ const Sidebar = () => {
                   href="/"
                   className="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none"
                 >
-                  <span className="fs-5 d-none d-sm-inline text-dark">
-                    Menu
-                  </span>
+                  <h1 className="fs-5 d-none d-sm-inline text-dark">
+                    Deliveristo dog app
+                  </h1>
                 </a>
                 <ul
                   className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"

@@ -4,9 +4,12 @@
 @import "bootstrap/scss/mixins/breakpoints.scss";
 @import "bootstrap/scss/variables.scss";
 @import "bootstrap/scss/utilities.scss";
-@import "./app-image";
 @import "./app-buttons";
+@import "./app-fonts";
+@import "./app-image";
+@import "./app-loading";
 
-html {
+html * {
+  font-family: karla-regular !important;
   overflow-x: hidden;
 }

@@ -12,6 +12,7 @@ const galleryButtons = ({
         className="btn btn-outline-dark me-3 app-btn -fixed-width"
         onClick={() => changeImage(-1)}
         disabled={currentIndex === 0}
+        data-cy="btn-previous"
       >
         Previous
       </button>
@@ -22,6 +23,7 @@ const galleryButtons = ({
           dogImage.message.length - 1 === currentIndex &&
           dogImage.message.length !== 0
         }
+        data-cy="btn-next"
       >
         Next
       </button>

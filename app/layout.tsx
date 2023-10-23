@@ -1,6 +1,6 @@
 "use client";
 import "../styles/application.scss";
-import { Col, Grid, Row } from "react-flexbox-grid";
+import { Col, Row } from "react-flexbox-grid";
 import SelectedSectionProvider from "@/providers/sectionstate";
 import Header from "@/components/header";
 import { useEffect } from "react";

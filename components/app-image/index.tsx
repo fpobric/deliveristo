@@ -5,6 +5,7 @@ import DogImage from "@/types/DogImage";
 import Image from "next/image";
 import { SyntheticEvent, useCallback, useEffect, useState } from "react";
 import GalleryButtons from "../gallery-buttons";
+import Loading from "../app-loading.tsx";
 
 const AppImage = ({
   breedName,
@@ -81,28 +82,39 @@ const AppImage = ({
           </button>
         </div>
       ) : null}
-
-      {dogImage.message !== "" && typeof dogImage.message === "string" ? (
-        <Image src={dogImage?.message} layout="fill" alt="Picture of the dog" />
-      ) : null}
-      {Array.isArray(dogImage.message) &&
-      dogImage.message[currentIndex] !== "" &&
-      typeof dogImage.message[currentIndex] === "string" ? (
-        <div className="image-wrapper">
-          <div
-            className="image"
-            style={{
-              backgroundImage: `url(${dogImage.message[currentIndex]})`,
-            }}
-          ></div>
-          <GalleryButtons
-            dogImage={dogImage}
-            count={dogImage.message.length}
-            currentIndex={currentIndex}
-            changeImage={changeImage}
-          />
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <div className="image-frame" data-cy="dog-image">
+          {/* had to put prop unoptimized to diplay image in cypress test */}
+          {dogImage.message !== "" && typeof dogImage.message === "string" ? (
+            <Image
+              src={dogImage?.message}
+              layout="fill"
+              alt="Picture of the dog"
+              unoptimized
+            />
+          ) : null}
+          {Array.isArray(dogImage.message) &&
+          dogImage.message[currentIndex] !== "" &&
+          typeof dogImage.message[currentIndex] === "string" ? (
+            <div className="image-wrapper" data-cy="image-wrapper">
+              <div
+                className="image"
+                style={{
+                  backgroundImage: `url(${dogImage.message[currentIndex]})`,
+                }}
+              ></div>
+              <GalleryButtons
+                dogImage={dogImage}
+                count={dogImage.message.length}
+                currentIndex={currentIndex}
+                changeImage={changeImage}
+              />
+            </div>
+          ) : null}
         </div>
-      ) : null}
+      )}
     </div>
   );
 };

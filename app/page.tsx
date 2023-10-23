@@ -36,12 +36,14 @@ const BreedImage = () => {
   };
 
   return (
-    <main className="breed-page">
+    <main className="breed-page" data-cy="breed-page">
       <div className="col-6 offset-3 mb-4 mt-5">
         <Select
           instanceId="1"
+          id="breed-select"
           options={breed}
           value={selectedBreed}
+          data-cy="breed-select"
           onChange={e => handleBreed(e)}
           ref={
             selectRef as React.RefObject<
