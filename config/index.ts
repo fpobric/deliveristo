@@ -40,16 +40,16 @@ const links = [
     targetSegment: "breed",
   },
   {
-    label: "Random images",
-    path: "/random-image",
-    title: "Random section",
-    targetSegment: "random",
-  },
-  {
     label: "Images by sub breed",
     path: "/sub-breed-image",
     title: "Breed and sub-breed section",
     targetSegment: "sub-breed",
+  },
+  {
+    label: "Random images",
+    path: "/random-image",
+    title: "Random section",
+    targetSegment: "random",
   },
 ];
 

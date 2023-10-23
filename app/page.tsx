@@ -36,8 +36,8 @@ const BreedImage = () => {
   };
 
   return (
-    <main className="">
-      <div className="">
+    <main className="breed-page">
+      <div className="col-6 offset-3 mb-4 mt-5">
         <Select
           instanceId="1"
           options={breed}

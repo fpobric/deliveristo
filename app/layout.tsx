@@ -1,9 +1,9 @@
 "use client";
-import "./globals.css";
+import "../styles/application.scss";
 import { Col, Grid, Row } from "react-flexbox-grid";
 import SelectedSectionProvider from "@/providers/sectionstate";
 import Header from "@/components/header";
-import { use, useEffect } from "react";
+import { useEffect } from "react";
 import useSectionState from "@/hooks/useSectionState";
 import Sidebar from "@/components/sidebar";
 
@@ -19,18 +19,18 @@ export default function RootLayout({
     <html lang="en">
       <body className={`app-body`}>
         <SelectedSectionProvider>
-          <Grid>
+          <Row className="p-0">
             <Header />
             <Row around="xs">
-              <Col xs={3}>
+              <Col xs={3} className="p-0">
                 <Sidebar />
               </Col>
               <Col xs={9}>
-                <div className="content">{children}</div>
+                <div className="content h-100">{children}</div>
               </Col>
             </Row>
             <Row></Row>
-          </Grid>
+          </Row>
         </SelectedSectionProvider>
       </body>
     </html>

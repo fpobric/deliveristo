@@ -1,0 +1,16 @@
+.app-image {
+  img {
+    position: relative !important;
+    max-width: 400px;
+    max-height: 400px;
+  }
+  .image-wrapper {
+    .image {
+      width: 400px;
+      height: 400px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+}

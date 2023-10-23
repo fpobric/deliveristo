@@ -47,34 +47,51 @@ const AppImage = ({
     const data = await res.json();
     setDogImage(data);
     setIsLoading(false);
-    return data;
   }, [typeOfImage]);
 
   useEffect(() => {
     fetchImage();
-  }, [breedName, subBreedName, fetchImage]);
+  }, [breedName, subBreedName, currentIndex, fetchImage]);
 
-  const changeImage = () => {
-    const index = 1;
+  const changeImage = (index: number) => {
     if (
       Array.isArray(dogImage.message) &&
-      dogImage.message.length >= index &&
+      dogImage.message.length > currentIndex &&
       index > 0
-    )
-      setCurrentIndex(currentIndex + index);
-    if (Array.isArray(dogImage.message) && currentIndex > 0 && index < 0)
-      setCurrentIndex(currentIndex - index);
+    ) {
+      setCurrentIndex(prevValue => prevValue + index);
+    }
+    if (Array.isArray(dogImage.message) && currentIndex > 0 && index < 0) {
+      setCurrentIndex(prevValue => prevValue - Math.abs(index));
+    }
+  };
+  const handleRandomByBreed = (event: SyntheticEvent) => {
+    setDogImage({ message: "", status: "" });
+    setIsRandom(true);
+    event.preventDefault();
+    fetchImage();
   };
 
   return (
-    <div>
+    <div className="app-image d-flex justify-content-center align-items-center h-100 flex-wrap">
+      {(breedName && !subBreedName) || (breedName && subBreedName) ? (
+        <div className="d-flex w-100 justify-content-center mb-4">
+          <button
+            className="btn btn-outline-dark me-3 app-btn"
+            onClick={e => handleRandomByBreed(e)}
+          >
+            Feeling lucky by breed?
+          </button>
+        </div>
+      ) : null}
+
       {dogImage.message !== "" && typeof dogImage.message === "string" ? (
         <Image src={dogImage?.message} layout="fill" alt="Picture of the dog" />
       ) : null}
       {Array.isArray(dogImage.message) &&
       dogImage.message[currentIndex] !== "" &&
       typeof dogImage.message[currentIndex] === "string" ? (
-        <div>
+        <div className="image-wrapper">
           <div
             className="image"
             style={{
@@ -82,10 +99,25 @@ const AppImage = ({
             }}
           ></div>
           {dogImage.message.length > 1 ? (
-            <>
-              <button onClick={() => changeImage()}>up</button>
-              <button onClick={() => changeImage()}>down</button>
-            </>
+            <div className="d-flex justify-content-center mt-4">
+              <button
+                className="btn btn-outline-dark me-3 app-btn -fixed-width"
+                onClick={() => changeImage(-1)}
+                disabled={currentIndex === 0}
+              >
+                Previous
+              </button>
+              <button
+                className="btn btn-outline-dark app-btn -fixed-width"
+                onClick={() => changeImage(1)}
+                disabled={
+                  dogImage.message.length - 1 === currentIndex &&
+                  dogImage.message.length !== 0
+                }
+              >
+                Next
+              </button>
+            </div>
           ) : null}
         </div>
       ) : null}

@@ -57,10 +57,11 @@ const SubBreedImage = () => {
   };
 
   return (
-    <main className="">
-      <div className="">
+    <main className="sub-breed">
+      <div className="col-6 offset-3 mb-4 mt-5">
         <Select
           instanceId="1"
+          className="mb-2"
           options={breed}
           value={selectedBreed}
           onChange={e => handleBreed(e)}

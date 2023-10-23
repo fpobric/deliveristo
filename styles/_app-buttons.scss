@@ -1,0 +1,12 @@
+.app-btn {
+  border-radius: 5px !important;
+  font-weight: bold !important;
+  text-decoration: none;
+  outline: none;
+  min-height: 35px;
+  max-height: 40px;
+
+  &.-fixed-width {
+    width: 150px;
+  }
+}
