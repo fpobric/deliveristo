@@ -2,17 +2,43 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+- Clone the project
+- Run Bash or some other terminal in the newly created folder
+- Run command yarn install or npm i
+
+After running commands above, run the server:
 
 ```bash
-npm run dev
+npm run start
 # or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+yarn start
 ```
+
+To run tests
+
+```bash
+npm run cypress:open
+# or
+yarn cypress:open
+```
+
+For test automation Cypress has been integrated into project. Test cases and complexity are reduced to minimus cause of the lack of free time to make them more complex.
+
+## Libraries and versions
+
+- At the moment of project creation all the latest libraries has been used.
+- Next.js with app router
+- Styling has been combined with Flexgrid and Bootstrap and custom style
+- React select
+- Used context and benefits of using useReducer hook for managing the state
+
+Project has been clean and no unused libraries are getting installed.
+
+### Libraries and versions and code
+
+Please bear in mind that I am very limited with my free time at th moment. Maybe some parts of the project could have been written in better way. Keeping in mind that if you find some sections could have been written more cleanly or with better approach, please mark them and we could discuss them and I can give you other approach to the problem.
+
+##Hoping you will find this code good enough to book a call with me to discuss my background and knowledge.
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
